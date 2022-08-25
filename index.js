@@ -15,7 +15,7 @@ while(codigo != -1){
         }
         else{
             while (pago != "SI" && pago != "NO"){
-                console.log("ERORR! \n 'SI' en caso de que haya pagado o 'NO' en caso contrario");
+                console.log("ERORR! \n Ingresar 'SI' en caso de que haya pagado o 'NO' en caso contrario");
                 pago = prompt("Ingresar 'SI' o 'NO'").toUpperCase();
             }
             
