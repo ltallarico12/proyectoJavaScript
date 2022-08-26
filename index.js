@@ -13,13 +13,13 @@ while (codigo != -1){
 
     //En caso de que el codigo del producto sea valido(mayor a 0).
     while (codigo > 0){
-        alert(`El codigo del producto ingresado es: ${codigo}`)
+        console.log();(`El codigo del producto ingresado es: ${codigo}`)
         validar = prompt("validar con SI o NO en caso de que sea correcto el codigo ingressado").toUpperCase;
 
         //Validación si el codigo del producto que quiero ingresar es correcto o no.
         if (validar === "SI"){
             precio = parseInt(prompt("Ingresar el precio del producto"));
-            alert(`El precio del pdoducto con codigo ${codigo} es: ${precio}`)
+            console.log();(`El precio del pdoducto con codigo ${codigo} es: ${precio}`)
             monto = monto + precio
             codigo = parseInt(prompt("Ingresar el codigo de un nuevo producto"));
         }
@@ -31,10 +31,10 @@ while (codigo != -1){
 }
 if(monto > 0){
     //Se muestra por pantalla el monto total que debe abonar el cliente.
-    alert(`El monto que el cliente debe abonar por su compra es de $${monto}`)
+    console.log();(`El monto que el cliente debe abonar por su compra es de $${monto}`)
 }
 //Aviso de que ya se salió del programa.
-alert("Salimos del programa")
+console.log();("Salimos del programa")
 
 
 
