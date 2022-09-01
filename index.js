@@ -1,9 +1,15 @@
+//Creación de una función de suma de dos números.
 const suma = (num1, num2) => {return num1 + num2}
+
+const codigosProduc = []
 
 let codigo = parseInt(prompt("Ingresar el codigo del producto"));
 let validar;
 let precio;
 let monto = 0;
+
+//Creación del objeto para ir ingresandolo al array.
+//let obj = {codigo:codigo, precio:precio};
 
 //Condición de salida cuando quiero dejar de ingresar productos.
 while (codigo != -1){
@@ -24,6 +30,10 @@ while (codigo != -1){
             precio = parseInt(prompt("Ingresar el precio del producto"));
             console.log(`El precio del pdoducto con codigo ${codigo} es: ${precio}`);
             monto = suma(monto, precio)
+            //Recorró el arreglo para ver si no existe el producto e ingresarlo.
+            if (codigosProduc.includes(codigo) === false){
+                codigosProduc.push(codigo);
+            }
             codigo = parseInt(prompt("Ingresar el codigo de un nuevo producto"));
         }
         //En caso de que el codigo del producto no haya sido el deseado, se pide nuevamente.
@@ -32,9 +42,11 @@ while (codigo != -1){
         }
     }
 }
+
 if(monto > 0){
     //Se muestra por pantalla el monto total que debe abonar el cliente.
-    console.log(`El monto que el cliente debe abonar por su compra es de $${monto}`)
+    console.log(`El monto que el cliente debe abonar por su compra es de ${monto}`)
+    console.log(`Los codigo de los pructos que lleva el cliente son: ${codigosProduc}`);
 }
 
 //Aviso de que ya se salió del programa.
