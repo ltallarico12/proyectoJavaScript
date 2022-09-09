@@ -51,7 +51,11 @@ while (codigo != -1){
             // if (productos.includes(objetoProducto.codigo) === false){
             //     productos.push(objetoProducto)
             // }
+            // else{
+            //
+            //}
             productos.push(objetoProducto)
+
             codigo = parseInt(prompt("Ingresar el codigo de un nuevo producto"));
         }
         //En caso de que el codigo del producto no haya sido el deseado, se pide nuevamente.
