@@ -1,11 +1,22 @@
 //Creación de una función de suma de dos números.
 const suma = (num1, num2) => {return num1 + num2}
 
-const codigosProduc = []
+class Producto{
+
+    constructor(codigo, precioUni, cantidad){
+        this.codigo = codigo;
+        this.precioUni = precioUni;
+        this.cantidad = cantidad
+    }
+}
+
+
+const productos = []
 
 let codigo = parseInt(prompt("Ingresar el codigo del producto"));
 let validar;
-let precio;
+let precioUni;
+let cantidad;
 let monto = 0;
 
 //Creación del objeto para ir ingresandolo al array.
@@ -27,13 +38,20 @@ while (codigo != -1){
 
         //Validación en caso de que el codigo del producto haya sido el deseado.
         if (validar === "SI"){
-            precio = parseInt(prompt("Ingresar el precio del producto"));
-            console.log(`El precio del pdoducto con codigo ${codigo} es: ${precio}`);
-            monto = suma(monto, precio)
+            //Pido los distintos atributos del objeto producto a ingresar.
+            precioUni = parseInt(prompt("Ingresar el precio del producto"));
+            cantidad = parseInt(prompt("Ingresar la cantidad de ese producto"));
+            console.log(`El precio del pdoducto con codigo ${codigo} es: ${precioUni} y la cantidad solicitada es: ${cantidad}`);
+            
+            //Sumando el monto total a abonar por parte del cliente.
+            monto = suma(monto, (precioUni*cantidad))
+            const objetoProducto = new Producto(codigo, precioUni, cantidad);
+            
             //Recorró el arreglo para ver si no existe el producto e ingresarlo.
-            if (codigosProduc.includes(codigo) === false){
-                codigosProduc.push(codigo);
-            }
+            // if (productos.includes(objetoProducto.codigo) === false){
+            //     productos.push(objetoProducto)
+            // }
+            productos.push(objetoProducto)
             codigo = parseInt(prompt("Ingresar el codigo de un nuevo producto"));
         }
         //En caso de que el codigo del producto no haya sido el deseado, se pide nuevamente.
@@ -46,7 +64,7 @@ while (codigo != -1){
 if(monto > 0){
     //Se muestra por pantalla el monto total que debe abonar el cliente.
     console.log(`El monto que el cliente debe abonar por su compra es de ${monto}`)
-    console.log(`Los codigo de los pructos que lleva el cliente son: ${codigosProduc}`);
+    console.log(`Los productos que lleva el cliente son: ${productos}`);
 }
 
 //Aviso de que ya se salió del programa.
