@@ -1,6 +1,20 @@
-//Creación de una función de suma de dos números.
-const suma = (num1, num2) => {return num1 + num2}
+//Creación de una función de orden superior, devuelve funciones según lo que se necesite.
+function operaciones(op){
+    if (op === "sumar"){
+        return (x,y) => x + y;
+    }
+    if (op === "restar"){
+        return (x,y) => x + y;
+    }
+    if (op === "multiplicar"){
+        return (x,y) => x + y;
+    }
+    if (op === "dividir"){
+        return (x,y) => x + y;
+    }
+}
 
+//Creación del objeto producto, para ir ingresando los productos al carrito.
 class Producto{
 
     constructor(codigo, precioUni, cantidad){
@@ -18,9 +32,8 @@ let validar;
 let precioUni;
 let cantidad;
 let monto = 0;
+let sumar = operaciones("sumar");
 
-//Creación del objeto para ir ingresandolo al array.
-//let obj = {codigo:codigo, precio:precio};
 
 //Condición de salida cuando quiero dejar de ingresar productos.
 while (codigo != -1){
@@ -41,10 +54,10 @@ while (codigo != -1){
             //Pido los distintos atributos del objeto producto a ingresar.
             precioUni = parseInt(prompt("Ingresar el precio del producto"));
             cantidad = parseInt(prompt("Ingresar la cantidad de ese producto"));
-            console.log(`El precio del pdoducto con codigo ${codigo} es: ${precioUni} y la cantidad solicitada es: ${cantidad}`);
+            console.log(`El precio del producto con codigo ${codigo} es: ${precioUni} y la cantidad solicitada es: ${cantidad}`);
             
             //Sumando el monto total a abonar por parte del cliente.
-            monto = suma(monto, (precioUni*cantidad))
+            monto = sumar(monto, (precioUni*cantidad));
             const objetoProducto = new Producto(codigo, precioUni, cantidad);
             
             //Recorró el arreglo para ver si no existe el producto e ingresarlo.  ***NO FUNCIONA AL MOMENTO DE LA ENTREGA, POR ESO LO SAQUË***
@@ -72,4 +85,4 @@ if(monto > 0){
 }
 
 //Aviso de que ya se salió del programa.
-console.log("Salimos del programa");
+console.log("Salimos del programa, listo para el siguiente cliente");
