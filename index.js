@@ -47,14 +47,14 @@ while (codigo != -1){
             monto = suma(monto, (precioUni*cantidad))
             const objetoProducto = new Producto(codigo, precioUni, cantidad);
             
-            //Recorró el arreglo para ver si no existe el producto e ingresarlo.
+            //Recorró el arreglo para ver si no existe el producto e ingresarlo.  ***NO FUNCIONA AL MOMENTO DE LA ENTREGA, POR ESO LO SAQUË***
             // if (productos.includes(objetoProducto.codigo) === false){
             //     productos.push(objetoProducto)
             // }
             // else{
             //
             //}
-            productos.push(objetoProducto)
+            productos.push(objetoProducto);
 
             codigo = parseInt(prompt("Ingresar el codigo de un nuevo producto"));
         }
