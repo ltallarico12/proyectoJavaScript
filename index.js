@@ -14,7 +14,7 @@ function operaciones(op){
     }
 }
 
-//Creación del objeto producto, para ir ingresando los productos al carrito.
+//Creación de la clase producto con su constructor , para ir ingresando los productos al carrito.
 class Producto{
 
     constructor(codigo, precioUni, cantidad){
@@ -58,15 +58,8 @@ while (codigo != -1){
             
             //Sumando el monto total a abonar por parte del cliente.
             monto = sumar(monto, (precioUni*cantidad));
-            const objetoProducto = new Producto(codigo, precioUni, cantidad);
+            let objetoProducto = new Producto(codigo, precioUni, cantidad);
             
-            //Recorró el arreglo para ver si no existe el producto e ingresarlo.  ***NO FUNCIONA AL MOMENTO DE LA ENTREGA, POR ESO LO SAQUË***
-            // if (productos.includes(objetoProducto.codigo) === false){
-            //     productos.push(objetoProducto)
-            // }
-            // else{
-            //
-            //}
             productos.push(objetoProducto);
 
             codigo = parseInt(prompt("Ingresar el codigo de un nuevo producto"));
