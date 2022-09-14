@@ -27,12 +27,17 @@ class Producto{
 
 const productos = []
 
-let codigo = parseInt(prompt("Ingresar el codigo del producto"));
+let codigo;
 let validar;
 let precioUni;
 let cantidad;
 let monto = 0;
 let sumar = operaciones("sumar");
+
+let nombre = prompt("Ingrese su nombre");
+saludo.innerHTML = `<h1>¡Bienvenido ${nombre}!</h1>`
+
+codigo = parseInt(prompt("Ingresar el codigo del producto"));
 
 
 //Condición de salida cuando quiero dejar de ingresar productos.
