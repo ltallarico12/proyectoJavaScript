@@ -24,17 +24,26 @@
     background-color: #282d32;
     margin: 50px;
     display: flex;
-    justify-content: end;
+    justify-content: center;
     align-items: center;
     border-radius: 20px;
 }
-.carrito h4{
-    color: #fff;
+.carrito button{
+    border: none;
+    color: #282d32;
     padding: 5px;
     text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#productos{
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
 }
 
 
+/* Elementos del footer */
 .footer-dark {
     width: 100%;
     padding:50px 0;

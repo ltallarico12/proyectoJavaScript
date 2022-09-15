@@ -82,5 +82,28 @@ if(monto > 0){
     console.log(`Los productos que lleva el cliente son: ${productos}`);
 }
 
+//Creo una función para filtar los productos por el precio.
+let precio = parseInt(prompt("Ingrese el precio minimo"));
+let productosFiltrados = productos.filter(item => item.precioUni > precio);
+
+let produc = document.getElementById("productos");
+
+for (const i of productosFiltrados){
+    let item = document.createElement("div");
+    item.innerHTML = `<h4>ID: ${i.codigo}<h4>
+                        <p>producto: ${i.cantidad}<p>
+                        <b>precio: ${i.precioUni}<b>`;
+    produc.append(item);
+}
+
+
+//Utilizando eventos.
+const total = (m) =>{
+    console.log(`Su monto total a pagar es: ${m}`);
+}
+let boton = document.getElementById("btn");
+boton.addEventListener("click", () => total(monto));
+
+
 //Aviso de que ya se salió del programa.
 console.log("Salimos del programa, listo para el siguiente cliente");
