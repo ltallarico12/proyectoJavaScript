@@ -24,80 +24,32 @@ class Producto{
     }
 }
 
+//creo un objeto nuevo.
+const producto1 = new Producto(111, 100, 1);
+// const producto2 = new Producto(222,200,2);
+// const producto3 = new Producto(333,300,3);
 
+//creación del array.
 const productos = []
 
-let codigo;
-let validar;
-let precioUni;
-let cantidad;
+
 let monto = 0;
-let sumar = operaciones("sumar");
 
 let nombre = prompt("Ingrese su nombre");
 saludo.innerHTML = `<h1>¡Bienvenido ${nombre}!</h1>`
 
-codigo = parseInt(prompt("Ingresar el codigo del producto"));
 
-
-//Condición de salida cuando quiero dejar de ingresar productos.
-while (codigo != -1){
-
-    //En caso de que el codigo del producto sea un número invalido(negativo), solicito ingresarlo nuevamente hasta que sea correcto.
-    while (codigo <= 0){
-        codigo = parseInt(prompt("Ingresar el codigo del producto correctamente1"));
-    }
-
-    //En caso de que el codigo del producto sea valido(mayor a 0).
-    while (codigo > 0){
-        //Muestro el codigo del producto por pantalla y pido validación si el codigo ingresado era el deseado.
-        console.log(`El codigo del producto ingresado es: ${codigo}`);
-        validar = prompt("validar con SI o NO en caso de que sea correcto el codigo ingressado").toUpperCase();
-
-        //Validación en caso de que el codigo del producto haya sido el deseado.
-        if (validar === "SI"){
-            //Pido los distintos atributos del objeto producto a ingresar.
-            precioUni = parseInt(prompt("Ingresar el precio del producto"));
-            cantidad = parseInt(prompt("Ingresar la cantidad de ese producto"));
-            console.log(`El precio del producto con codigo ${codigo} es: ${precioUni} y la cantidad solicitada es: ${cantidad}`);
-            
-            //Sumando el monto total a abonar por parte del cliente.
-            monto = sumar(monto, (precioUni*cantidad));
-            let objetoProducto = new Producto(codigo, precioUni, cantidad);
-            
-            productos.push(objetoProducto);
-
-            codigo = parseInt(prompt("Ingresar el codigo de un nuevo producto"));
-        }
-        //En caso de que el codigo del producto no haya sido el deseado, se pide nuevamente.
-        else{
-            codigo = parseInt(prompt("Ingresar el codigo del producto deseado"));
-        }
-    }
+//Agregando al carrito.
+const pusheo = () =>{
+    productos.push(producto1);
 }
-
-if(monto > 0){
-    //Se muestra por pantalla el monto total que debe abonar el cliente.
-    console.log(`El monto que el cliente debe abonar por su compra es de ${monto}`)
-    console.log(`Los productos que lleva el cliente son: ${productos}`);
-}
-
-//Creo una función para filtar los productos por el precio.
-let precio = parseInt(prompt("Ingrese el precio minimo"));
-let productosFiltrados = productos.filter(item => item.precioUni > precio);
-
-let produc = document.getElementById("productos");
-
-for (const i of productosFiltrados){
-    let item = document.createElement("div");
-    item.innerHTML = `<h4>ID: ${i.codigo}<h4>
-                        <p>producto: ${i.cantidad}<p>
-                        <b>precio: ${i.precioUni}<b>`;
-    produc.append(item);
-}
+let botonComprar = document.getElementById("btn-comprar");
+botonComprar.addEventListener("click", () => pusheo);
 
 
-//Utilizando eventos.
+//calculo el total
+monto = productos.reduce((acum, item) => acum + (item.precioUni*item.cantidad), 0);
+//Evento para ver el monto total.
 const total = (m) =>{
     console.log(`Su monto total a pagar es: ${m}`);
 }
@@ -105,5 +57,18 @@ let boton = document.getElementById("btn");
 boton.addEventListener("click", () => total(monto));
 
 
-//Aviso de que ya se salió del programa.
-console.log("Salimos del programa, listo para el siguiente cliente");
+//Agregando un filtro.
+let precio = parseInt(prompt("Ingrese el precio minimo"));
+let productosFiltrados = productos.filter(item => item.precioUni > precio);
+
+let produc = document.getElementById("productos");
+
+for (const i of productosFiltrados){
+    filtrar.innerHTML = `<h4>ID: ${i.codigo}<h4>
+                        <p>producto: ${i.cantidad}<p>
+                        <b>precio: ${i.precioUni}<b>`;
+    produc.append(item);
+}
+
+
+localStorage.setItem('miArray', JSON.stringify(productos));
