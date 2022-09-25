@@ -21,14 +21,16 @@
     align-items: center;
 }
 .carta{
+    padding: 0 35px;
+    margin: 50px;
     width: 250px;
-    height: 385px;
+    height: 380px;
     text-align: center;
 }
-.carta-img:hover{
+/* .carta-img:hover{
     scale: 1.1;
     transition: 0.4s;
-}
+} */
 .carta-img img{
     width: 180px;
     height: 200px;

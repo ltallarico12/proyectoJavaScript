@@ -17,26 +17,26 @@ function operaciones(op){
 //Creación de la clase producto con su constructor , para ir ingresando los productos al carrito.
 class Producto{
 
-    constructor(codigo, precioUni, cantidad){
+    constructor(codigo, modelo, marca, tipo, precioUni){
         this.codigo = codigo;
+        this.modelo = modelo;
+        this.marca = marca;
+        this.tipo = tipo;
         this.precioUni = precioUni;
-        this.cantidad = cantidad
     }
 }
 
-//creo un objeto nuevo.
-const producto1 = new Producto(111, 100, 1);
-// const producto2 = new Producto(222,200,2);
-// const producto3 = new Producto(333,300,3);
-
 //creación del array.
 const productos = []
-
-
 let monto = 0;
 
-let nombre = prompt("Ingrese su nombre");
-saludo.innerHTML = `<h1>¡Bienvenido ${nombre}!</h1>`
+//Funcion para ir cargando los productos al array de los mismos.
+function cargarProductos(){
+    productos.push(new Producto(111, 'modelo1', 'wilson', 'paleta', 1000 ));
+    productos.push(new Producto(222, 'modelo2', 'wilson', 'paleta', 2000 ));
+    productos.push(new Producto(333, 'modelo3', 'wilson', 'paleta', 3000 ));
+}
+
 
 
 //Agregando al carrito.
@@ -49,6 +49,7 @@ botonComprar.addEventListener("click", () => pusheo);
 
 //calculo el total
 monto = productos.reduce((acum, item) => acum + (item.precioUni*item.cantidad), 0);
+
 //Evento para ver el monto total.
 const total = (m) =>{
     console.log(`Su monto total a pagar es: ${m}`);
