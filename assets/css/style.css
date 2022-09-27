@@ -13,6 +13,25 @@
 }
 
 
+/*Carrito*/
+.carrito-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.carrito-renglon{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.carrito-renglon-img img{
+    width: 50px;
+    height: 50px;
+}
+
+
+
 /*Acomodando el contenido de las cards de prouctos*/
 .carta-container{
     margin: 20px;
@@ -49,42 +68,6 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-
-#saludo{
-    margin: 30px;
-    display: flex;
-    justify-content: center;
-}
-
-.carrito-container{
-    width: 100%;
-    margin: 100px 0;
-    display: flex;
-    justify-content: center;
-}
-.carrito{
-    width: 200px;
-    height: 100px;
-    background-color: #282d32;
-    margin: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-}
-.carrito button{
-    border: none;
-    color: #282d32;
-    padding: 5px;
-    text-align: center;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-
-#productos{
-    margin-bottom: 50px;
-    display: flex;
-    justify-content: center;
-}
 
 
 /* Elementos del footer */

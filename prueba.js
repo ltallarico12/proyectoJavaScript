@@ -29,6 +29,7 @@ class Producto{
 
 //creación del array.
 const productos = []
+const carrito = []
 let monto = 0;
 
 //Funcion para ir cargando los productos al array de los mismos.
@@ -38,16 +39,16 @@ function cargarProductos(){
     productos.push(new Producto(333, 'modelo3', 'bullpadel', 'paleta', 3000, 'https://res.cloudinary.com/dukzpfooc/image/upload/v1664143464/paleta_de_padel_jq02w4.webp'));
     productos.push(new Producto(444, 'remeraA', 'vairo', 'ropa', 400, 'https://res.cloudinary.com/dukzpfooc/image/upload/v1664143565/remeraa_wvxo1l.jpg'));
     productos.push(new Producto(555, 'remeraB', 'head', 'ropa', 500, 'https://res.cloudinary.com/dukzpfooc/image/upload/v1664143709/remerab_vdxzlk.webp'));
-    productos.push(new Producto(666, 'remeraC', 'xxx', 'ropa', 600, 'https://res.cloudinary.com/dgvlsnajj/image/upload/v1664139230/paleta_dfmsly.webp'));
+    productos.push(new Producto(666, 'remeraC', 'x', 'ropa', 600, 'https://res.cloudinary.com/dgvlsnajj/image/upload/v1664139230/paleta_dfmsly.webp'));
 }
 cargarProductos();
 console.log(productos);
 
+//Agrego los productos a la página.
 const itemsaPintar = document.querySelector("#carta-container");
 function agregarCards(){
 
     productos.forEach((producto) => {
-
         let producHTML = `
                     <div class="carta col-4" style="margin: 30px 0;">
                         <h4>${producto.modelo}<h4>
@@ -55,17 +56,42 @@ function agregarCards(){
                         <div class="carta-cuerpo">
                             <strong>${producto.precioUni}</strong>
                             <p class="text-muted py-2">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <button class="btn btn-outline-dark">comprar</button>
+                            <button id="comprar" class="btn btn-outline-dark">comprar</button>
                         </div>
-                    <div>`;
+                    <div>
+                    `;
         itemsaPintar.innerHTML += producHTML;
     });
 }
 agregarCards();
 
-//Agregando al carrito.
-const pusheo = () =>{
-    productos.push(producto1);
+
+//Muestro los productos del carrito.
+const carritoPintar = document.querySelector("#carrito-container");
+function mostrarProductosCarrito(){
+
+    carrito.forEach((producto) => {
+        let lineaCarritoHTML = `
+                            <div class="carrito-renglon">
+                                <div class="carrito-renglon-img"><img src="${producto.img}" alt=""><div>
+                                <strong>${producto.precioUni}<strong>
+                                <p>${producto.tipo}<p>
+                                <p>${producto.marca}<p>
+                            <div>
+                                `;
+        carritoPintar.innerHTML += lineaCarritoHTML;
+    });
 }
-let botonComprar = document.getElementById("btn-comprar");
-botonComprar.addEventListener("click", () => pusheo);
+
+
+
+const comprado = document.querySelector("#comprar");
+comprado.addEventListener("click", agregarCarrito);
+
+function agregarCarrito(id){
+    let produc = productos.find((produc) => produc.id === id);
+    carrito.push(produc);
+}
+console.log(carrito);
+
+
