@@ -45,9 +45,19 @@ function cargarProductos(){
 cargarProductos();
 console.log(productos);
 
-//Agrego los productos a la página.
+//Obtengo el contenedor de los productos
 const itemsaPintar = document.getElementById('carta-container');
 
+//Obtengo el contenedor del carrito
+const carritoPintar = document.getElementById('carrito-container');
+
+const botonVaciar = document.getElementById('vaciar-carrito');
+botonVaciar.addEventListener('click', () => {
+    carrito.length = 0
+    actualizarCarrito();
+})
+
+//Agrego los productos a la página.
 productos.forEach((producto) => {
     const productHTML = document.createElement('div')
     productHTML.classList.add('carta')
@@ -55,31 +65,56 @@ productos.forEach((producto) => {
                 <h4>${producto.modelo}<h4>
                 <div class="carta-img"><img src="${producto.img}" alt=""></div>
                 <div class="carta-cuerpo">
-                    <strong>${producto.precioUni}</strong>
+                    <strong>$${producto.precioUni}</strong>
                     <p class="text-muted py-2">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     <button id="btn${producto.id}" class="btn btn-outline-dark">comprar</button>
                 </div>
                 `;
     itemsaPintar.appendChild(productHTML)
 
-    // //Tomo el id del boton para disparar el agregado del carrito.
-    // const boton = document.getElementById('btn${producto.id}');
-    // boton.addEventListener('click', () => {
-    //     agregarCarrito(producto.id)
-    // });
+    //Tomo el id del boton para disparar el agregado del carrito.
+    const boton = document.getElementById(`btn${producto.id}`);
+    boton.addEventListener('click', () => {
+        agregarCarrito(producto.id)
+    });
 });
-    
-
-
 
 
 //Agregao al carrito
 function agregarCarrito(prodId){
     const produc = productos.find((produc) => produc.id === prodId);
     carrito.push(produc);
+    actualizarCarrito();
     console.log(carrito);
 }
 
+//Elimino del carrito porductos sellecionados.
+const eliminarCarrtio = (prodId) => {
+    const item = carrito.find((producto) => producto.id === prodId);
+
+    const indice = carrito.indexOf(item);
+    carrito.splice(indice, 1);
+    actualizarCarrito();
+}
+
+//Pinto los productos dentro del carrito.
+const actualizarCarrito = () => {
+    carritoPintar.innerHTML = "";
+
+    carrito.forEach((producto) => {
+        const productHTML = document.createElement('div');
+        productHTML.className = ('carrito-renglon');
+        productHTML.innerHTML = `
+                                <div class="col-2 carrito-renglon-img"><img src="${producto.img}" alt=""></div>
+                                <strong class="col-2 carrito-renglon-precio">$${producto.precioUni}</strong>
+                                <p class="col-2 carrito-renglon-tipo">${producto.tipo}</p>
+                                <p class="col-2 carrito-renglon-marca">${producto.marca}</p>
+                                <p class="col-2 carrito-renglon-cant">${producto.cantidad}</p>
+                                <button onclick="eliminarCarrito(${producto.id}) class="col-2 boton-eliminar"><i class="bi bi-trash3-fill"></i></button>
+                                `;
+        carritoPintar.appendChild(productHTML)
+    })
+}
 
 
 // //Muestro los productos del carrito.

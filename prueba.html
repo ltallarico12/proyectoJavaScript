@@ -6,51 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Document</title>
 </head>
-<body>
+<body class="body-container">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark container-fluid">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">NanoT e-commerce</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">...</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">...</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">...</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            ...
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">...</a></li>
-                            <li><a class="dropdown-item" href="#">...</a></li>
-                            <li><a class="dropdown-item" href="#">...</a></li>
-                        </ul>
-                    </li>
-                </ul>
+            <div>
+                <button class="botonCarrito"><i class="bi bi-cart3"></i></button>
             </div>
         </div>
     </nav>
-    <header></header>
+    <header class="header"></header>
     <main class="main">
         <section>
             <div id="carrito-container" ></div>
+            <button id="vaciar-carrito">Vaciar</button>
         </section>
         <section>
             <div id="carta-container" class="row carta-container"></div>
         </section>
     </main>
-    <footer>
+    <footer class="footer">
         <div class="footer-dark">
             <footer>
                 <div class="container">

@@ -6,30 +6,76 @@
     box-sizing: border-box;
 }
 
-.navbar{
-    width: 100%;
-    z-index: 1;
-    position: relative;
+
+.body-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:"navbar navbar navbar"
+                        "header header header"
+                        "main main main"
+                        "footer footer footer";
+}
+.header{
+    margin-top: 56px;
+    grid-area: header;
+}
+.main{
+    grid-area: main;
+}
+.footer{
+    grid-area: footer;
 }
 
+.navbar{
+    grid-area: navbar;
+    width: 100%;
+    z-index: 1;
+    position: fixed;
+}
+
+.botonCarrito{
+    text-decoration: none;
+    background-color: #282d32;
+    border-color: #f0f9ff;
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+}
+.botonCarrito:hover{
+    scale: 0.9;
+    background-color: #6b7177;
+    box-shadow: #282d32;
+}
+.botonCarrito i{
+    color: #f0f9ff;
+    height: 30px;
+    width: 30px;
+    padding: 0px;
+}
 
 /*Carrito*/
 .carrito-container{
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .carrito-renglon{
     display: flex;
     flex-direction: row;
-    
+    justify-content: space-around;
 }
-
 .carrito-renglon-img img{
     width: 50px;
     height: 50px;
 }
-
+.boton-eliminar{
+    height: 50%;
+    border: none;
+    border-color: #fff;
+}
 
 
 /*Acomodando el contenido de las cards de prouctos*/
@@ -46,10 +92,10 @@
     height: 380px;
     text-align: center;
 }
-/* .carta-img:hover{
+.carta-img:hover{
     scale: 1.1;
     transition: 0.4s;
-} */
+}
 .carta-img img{
     width: 180px;
     height: 200px;
