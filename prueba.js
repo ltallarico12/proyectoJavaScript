@@ -55,6 +55,13 @@ const botonVaciar = document.getElementById('vaciar-carrito');
 botonVaciar.addEventListener('click', () => {
     carrito.length = 0
     actualizarCarrito();
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Se vacio el carrito',
+        showConfirmButton: false,
+        timer: 1000
+    })
 })
 
 //Agrego los productos a la página.
@@ -110,11 +117,12 @@ const actualizarCarrito = () => {
                                 <p class="col-2 carrito-renglon-tipo">${producto.tipo}</p>
                                 <p class="col-2 carrito-renglon-marca">${producto.marca}</p>
                                 <p class="col-2 carrito-renglon-cant">${producto.cantidad}</p>
-                                <button onclick="eliminarCarrito(${producto.id}) class="col-2 boton-eliminar"><i class="bi bi-trash3-fill"></i></button>
+                                <button id="eliminar${producto.id}" class="col-2 boton-eliminar"><i class="bi bi-trash3-fill"></i></button>
                                 `;
         carritoPintar.appendChild(productHTML)
     })
 }
+
 
 
 // //Muestro los productos del carrito.
@@ -135,3 +143,6 @@ const actualizarCarrito = () => {
 // }
 
 
+
+
+localStorage.setItem('productos', JSON.stringify(productos))

@@ -73,3 +73,4 @@ for (const i of productosFiltrados){
 
 
 localStorage.setItem('miArray', JSON.stringify(productos));
+
