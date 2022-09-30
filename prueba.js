@@ -51,18 +51,8 @@ const itemsaPintar = document.getElementById('carta-container');
 //Obtengo el contenedor del carrito
 const carritoPintar = document.getElementById('carrito-container');
 
+//Obtener el boton vaciar
 const botonVaciar = document.getElementById('vaciar-carrito');
-botonVaciar.addEventListener('click', () => {
-    carrito.length = 0
-    actualizarCarrito();
-    Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Se vacio el carrito',
-        showConfirmButton: false,
-        timer: 1000
-    })
-})
 
 //Agrego los productos a la página.
 productos.forEach((producto) => {
@@ -85,6 +75,19 @@ productos.forEach((producto) => {
         agregarCarrito(producto.id)
     });
 });
+
+
+botonVaciar.addEventListener('click', () => {
+    carrito.length = 0
+    actualizarCarrito();
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Se vacio el carrito',
+        showConfirmButton: false,
+        timer: 1000
+    })
+})
 
 
 //Agregao al carrito
@@ -122,27 +125,6 @@ const actualizarCarrito = () => {
         carritoPintar.appendChild(productHTML)
     })
 }
-
-
-
-// //Muestro los productos del carrito.
-// const carritoPintar = document.querySelector("#carrito-container");
-// function mostrarProductosCarrito(){
-
-//     carrito.forEach((producto) => {
-//         let lineaCarritoHTML = `
-//                             <div class="carrito-renglon">
-//                                 <div class="carrito-renglon-img"><img src="${producto.img}" alt=""><div>
-//                                 <strong>${producto.precioUni}<strong>
-//                                 <p>${producto.tipo}<p>
-//                                 <p>${producto.marca}<p>
-//                             <div>
-//                                 `;
-//         carritoPintar.innerHTML += lineaCarritoHTML;
-//     });
-// }
-
-
 
 
 localStorage.setItem('productos', JSON.stringify(productos))
