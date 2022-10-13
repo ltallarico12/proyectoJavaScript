@@ -128,3 +128,23 @@ const actualizarCarrito = () => {
 
 
 localStorage.setItem('productos', JSON.stringify(productos))
+
+
+//la parte del fetch para el desafio.
+const contenido = document.getElementById("contenido");
+
+fetch('https://jsonplaceholder.typicode.com/posts')
+.then(response => response.json)
+.then(data => {
+    data.forEach(publicación => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+                        <h2>ID: ${publicación.id}</h2>
+                        <p>User: ${publicación.userId}</p>
+                        <p>Titulo: ${publicación.title}</p>
+                        <p>Contenido: ${publicación.body}</p>
+        `;
+
+        contenido.append(li);
+    });
+});
