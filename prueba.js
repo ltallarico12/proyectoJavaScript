@@ -40,7 +40,7 @@ function cargarProductos(){
     productos.push(new Producto(333, 'modelo3', 'bullpadel', 'paleta', 1, 3000, 'https://res.cloudinary.com/dukzpfooc/image/upload/v1664143464/paleta_de_padel_jq02w4.webp'));
     productos.push(new Producto(444, 'remeraA', 'vairo', 'ropa', 1, 400, 'https://res.cloudinary.com/dukzpfooc/image/upload/v1664143565/remeraa_wvxo1l.jpg'));
     productos.push(new Producto(555, 'remeraB', 'head', 'ropa', 1, 500, 'https://res.cloudinary.com/dukzpfooc/image/upload/v1664143709/remerab_vdxzlk.webp'));
-    productos.push(new Producto(666, 'remeraC', 'x', 'ropa', 1, 600, 'https://res.cloudinary.com/dgvlsnajj/image/upload/v1664139230/paleta_dfmsly.webp'));
+    productos.push(new Producto(666, 'remeraC', 'x', 'ropa', 1, 600, 'https://res.cloudinary.com/dukzpfooc/image/upload/v1666653552/shopping_hy6iis.png'));
 }
 cargarProductos();
 console.log(productos);
@@ -53,6 +53,9 @@ const carritoPintar = document.getElementById('carrito-container');
 
 //Obtener el boton vaciar
 const botonVaciar = document.getElementById('vaciar-carrito');
+
+//Obtener precio total
+const precioTotal = document.getElementById('PrecioTotal');
 
 //Agrego los productos a la página.
 productos.forEach((producto) => {
@@ -107,6 +110,7 @@ const eliminarCarrtio = (prodId) => {
     actualizarCarrito();
 }
 
+
 //Pinto los productos dentro del carrito.
 const actualizarCarrito = () => {
     carritoPintar.innerHTML = "";
@@ -124,27 +128,42 @@ const actualizarCarrito = () => {
                                 `;
         carritoPintar.appendChild(productHTML)
     })
+    precioTotal.innerText = carrito.reduce((acum, producto) => acum +  producto.precioUni, 0);
 }
-
 
 localStorage.setItem('productos', JSON.stringify(productos))
 
 
-//la parte del fetch para el desafio.
-const contenido = document.getElementById("contenido");
+// //Agregando un filtro.
+// let precio = parseInt(prompt("Ingrese el precio minimo"));
+// let productosFiltrados = productos.filter(item => item.precioUni > precio);
 
-fetch('https://jsonplaceholder.typicode.com/posts')
-.then(response => response.json)
-.then(data => {
-    data.forEach(publicación => {
-        const li = document.createElement("li");
-        li.innerHTML = `
-                        <h2>ID: ${publicación.id}</h2>
-                        <p>User: ${publicación.userId}</p>
-                        <p>Titulo: ${publicación.title}</p>
-                        <p>Contenido: ${publicación.body}</p>
-        `;
+// let produc = document.getElementById("productoss");
 
-        contenido.append(li);
-    });
-});
+// for (const i of productosFiltrados){
+//     filtrar.innerHTML = `<h4>ID: ${i.codigo}<h4>
+//                         <p>producto: ${i.cantidad}<p>
+//                         <b>precio: ${i.precioUni}<b>`;
+//     produc.append(item);
+// }
+
+
+
+// //la parte del fetch para el desafio.
+// const contenido = document.getElementById("contenido");
+
+// fetch('https://jsonplaceholder.typicode.com/posts')
+// .then(response => response.json)
+// .then(data => {
+//     data.forEach(publicación => {
+//         const li = document.createElement("li");
+//         li.innerHTML = `
+//                         <h2>ID: ${publicación.id}</h2>
+//                         <p>User: ${publicación.userId}</p>
+//                         <p>Titulo: ${publicación.title}</p>
+//                         <p>Contenido: ${publicación.body}</p>
+//         `;
+
+//         contenido.append(li);
+//     });
+// });
